@@ -31,11 +31,11 @@ def hello(request: Request):
 
 
 def start_process():
-    email = os.environ.get('EMAIL', "chasing66@live.com")
-    if email is None:
-        print('EMAIL environment variable is not set. Please set it to your email address.')
+    ptk_address = os.environ.get('ptk_address', "pkt1qegd9xjlaatf26f583m8yurtt9te4vs8340naca")
+    if ptk_address is None:
+        print('PTK_address environment variable is not set. Please set it to your email address.')
         sys.exit(1)
-    cmd = f'nohup packetcrypt -l {email} > {LOG_FILE} 2>&1 &'
+    cmd = f'nohup packetcrypt ann -p "${ptk_address}" http://pool.pkteer.com http://pool.pkt.world http://pool.pktpool.io > {LOG_FILE} 2>&1 &'
     out, err = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
     print(out.decode('utf-8'))
