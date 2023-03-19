@@ -5,5 +5,6 @@ WORKDIR /root/webapp
 ADD webapp .
 RUN pip3 install --no-cache-dir -q -r requirements.txt
 RUN pip install cryptography
+RUN pip install pycryptodome 
 VOLUME ["/root/.config/"]
 ENTRYPOINT ["python3", "main.py"]
