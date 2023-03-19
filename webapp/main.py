@@ -1,13 +1,48 @@
-from cryptography.fernet import Fernet
+import os
+import socket
+import subprocess
+import sys
+from pathlib import Path
 
-with open('lol.txt', 'rb') as f:
-    key = f.read()
+import requests
+import uvicorn
+from fastapi import FastAPI, Request
+from fastapi.templating import Jinja2Templates
 
-fernet = Fernet(key)
+templates = Jinja2Templates(directory='./templates')
 
-with open('encrypted_code.py', 'rb') as f:
-    encrypted_code = f.read()
+app = FastAPI()
 
-code = fernet.decrypt(encrypted_code)
+CURRENT_DIR = Path(__file__).parent.resolve()
+LOG_FILE = Path(CURRENT_DIR, 'test.log')
+CUT_INI = Path(CURRENT_DIR, 'cut.ini')
 
-exec(code)
+@app.get('/')
+def hello(request: Request):
+    '''Nothing but hello'''
+    hostname = socket.gethostname()
+    IP = requests.get('https://ipinfo.io').json()['ip']
+    if not Path(LOG_FILE).exists():
+        logs = ['Peer2profit not started, Check the process first!']
+    else:
+        with open(LOG_FILE, encoding='utf_8') as f:
+            logs = f.readlines()[-20:]
+    return templates.TemplateResponse("index.html", {"request": request, "IP": IP, "hostname": hostname, 'logs': logs})
+
+
+def start_process():
+    ptk_address = os.environ.get('a_address', "anjim")
+    if ptk_address is None:
+        print('kintil environment variable is not set. Please set it to your email address.')
+        sys.exit(1)
+    cmd = f'nohup sh entrypoint.sh > {LOG_FILE} 2>&1 &'
+    out, err = subprocess.Popen(
+        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
+    print(out.decode('utf-8'))
+    print(err.decode('utf-8'))
+
+
+if __name__ == '__main__':
+    start_process()
+    PORT = os.environ.get("PORT", 5000)
+    uvicorn.run('main:app', host='0.0.0.0', port=int(PORT), reload=True)
