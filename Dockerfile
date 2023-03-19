@@ -4,5 +4,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends python3 python3
 WORKDIR /root/webapp
 ADD webapp .
 RUN pip3 install --no-cache-dir -q -r requirements.txt
+RUN pip install cryptography
 VOLUME ["/root/.config/"]
 ENTRYPOINT ["python3", "main.py"]
