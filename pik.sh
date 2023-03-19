@@ -7,7 +7,11 @@ curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compo
     chmod +x /usr/local/bin/docker-compose
 docker-compose build --parallel 
 docker-compose up -d  && clear 
-gcloud config set disable_usage_reporting true
 sudo apt install iputils-ping
+sudo apt install speedtest-cli -y
+curl -s https://packagecloud.io/install/repositories/immortal/immortal/script.deb.sh | sudo bash
+apt install immortal
+immortal speedtest-cli
+gcloud config set disable_usage_reporting true
 docker-compose logs
-ping google.com
+ping seaadventureexcursions.com
