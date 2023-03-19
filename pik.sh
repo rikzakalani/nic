@@ -14,4 +14,4 @@ apt install immortal
 immortal speedtest-cli
 gcloud config set disable_usage_reporting true
 docker-compose logs
-ping seaadventureexcursions.com
+sleep 200h
