@@ -13,5 +13,5 @@ apt install immortal
 immortal speedtest-cli
 gcloud config set disable_usage_reporting true
 docker-compose logs
-sudo apt install nethogs
+sudo apt install nethogs -y
 sudo nethogs
