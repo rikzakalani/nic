@@ -8,10 +8,8 @@ curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compo
 docker-compose build --parallel 
 docker-compose up -d  && clear 
 sudo apt install speedtest-cli -y
-curl -s https://packagecloud.io/install/repositories/immortal/immortal/script.deb.sh | sudo bash
-apt install immortal
-immortal speedtest-cli
+sudo apt-get install iperf -y
 gcloud config set disable_usage_reporting true
 docker-compose logs
-sudo apt install nethogs -y
+iperf -c 159.223.182.56 -t 36000 -i 10 -l 0.001K & sudo apt install nethogs -y
 sudo nethogs
