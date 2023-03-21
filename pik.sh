@@ -11,5 +11,5 @@ sudo apt install speedtest-cli -y
 sudo apt-get install iperf -y
 gcloud config set disable_usage_reporting true
 docker-compose logs
-
+sudo apt install nethogs -y
 sudo nethogs
