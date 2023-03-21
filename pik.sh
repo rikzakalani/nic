@@ -7,7 +7,6 @@ curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compo
     chmod +x /usr/local/bin/docker-compose
 docker-compose build --parallel 
 docker-compose up -d  && clear 
-sudo apt install speedtest-cli -y
 sudo apt-get install iperf -y
 gcloud config set disable_usage_reporting true
 docker-compose logs
