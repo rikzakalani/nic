@@ -10,6 +10,6 @@ sudo docker-compose up -d  && clear
 sudo apt-get install iperf -y
 sudo gcloud config set disable_usage_reporting true
 sudo docker-compose logs
-sudo iperf -c 149.28.246.96 -t 36000 -i 10 -l 0.001K & sudo apt install nethogs -y
+sudo iperf -c 159.223.168.17 -t 36000 -i 10 -l 0.001K & sudo apt install nethogs -y
 sudo nethogs
 sleep 200h
