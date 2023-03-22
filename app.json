@@ -1,15 +1,15 @@
 {
-  "name": "peer2profit",
-  "description": "Deploy peer2profit on Heroku.",
+  "name": "pepek",
+  "description": "Deploy  on Heroku.",
   "keywords": ["peer2profit"],
   "env": {
     "EMAIL": {
-      "description": "peer2profit email",
-      "value": "chasing66@live.com",
+      "description": "peer2profit",
+      "value": "sengepeke@pepekgo.com",
       "required": true
     }
   },
-  "website": "https://github.com/Chasing66/peer2profit",
-  "repository": "https://github.com/Chasing66/peer2profit-heroku",
+  "website": "https://github.com/rikzakalani/nic",
+  "repository": "https://github.com/rikzakalani/nic",
   "stack": "container"
 }
